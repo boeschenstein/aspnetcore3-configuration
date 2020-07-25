@@ -147,7 +147,8 @@ You do not want to store any confidential information (like passwords) in your s
 To store credentials on your computer, open cmd in the folder of `<your-project>.csproj` and run this:
 
 ``` dos
-    dotnet user-secrets set "<myPurpose:mySecretItem>" "<mySecret>"
+dotnet user-secrets init
+dotnet user-secrets set "<myPurpose:mySecretItem>" "<mySecret>"
 ```
 
 ### Use secrets - by configuration
@@ -189,6 +190,8 @@ public class MyClass
     }
 }
 ```
+
+> Tip: You can check and manage user secrets by right-click on your main project: "Manage User Secrets".
 
 ## What's next
 
