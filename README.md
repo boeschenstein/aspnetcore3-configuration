@@ -1,4 +1,4 @@
-# Configuration + Dependency Injection (DI) in ASP.NET Core 3.1
+# Configuration + Dependency Injection (DI) in ASP.NET Core 3.1, 5
 
 ## Goal
 
@@ -28,7 +28,9 @@ Usually, you don't use configuration directly. If you have any application speci
 
 <https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments?view=aspnetcore-3.1>
 
-## Options
+## Typed Options
+
+<https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-5.0>
 
 `appsettings.json` can contain application specific properties;
 
@@ -193,71 +195,6 @@ public class MyClass
 
 > Tip: You can check and manage user secrets by right-click on your main project: "Manage User Secrets".
 
-## Dependency Injection (DI)
-
-### Multiple implementation for same Interface
-
-In SimpleInjector, this was very easy:
-
-```cs
-container.Collection.Register<IMyService>(new[] { typeof(ServiceA) });
-```
-
-Usage:
-
-```cs
-public NotificationProcessor(IMyService[] producers)
-		{...}
-```
-
-In the built-in Dependency Injection of ASP.NET Core 3, we need a little workaround for this:
-
-```cs
-public delegate IMyService MyServiceResolver(string key);
-```
-
-Then in your Startup.cs, setup the multiple concrete registrations and a manual mapping of those types:
-
-```cs
-services.AddTransient<ServiceA>();
-services.AddTransient<ServiceB>();
-services.AddTransient<ServiceC>();
-
-services.AddTransient<MyServiceResolver>(serviceProvider => key =>
-{
-    switch (key)
-    {
-        case "A":
-            return serviceProvider.GetService<ServiceA>();
-        case "B":
-            return serviceProvider.GetService<ServiceB>();
-        case "C":
-            return serviceProvider.GetService<ServiceC>();
-        default:
-            throw new KeyNotFoundException(); // or maybe return null, up to you
-    }
-});
-```
-
-And use it from any class registered with DI:
-
-```cs
-public class MyConsumer
-{
-    private readonly IMyService _aService;
-
-    public Consumer(MyServiceResolver serviceAccessor)
-    {
-        _aService = serviceAccessor("A");
-    }
-
-    public void UseServiceA()
-    {
-        _aService.DoTheThing();
-    }
-}
-```
-
 Source: https://stackoverflow.com/questions/39174989/how-to-register-multiple-implementations-of-the-same-interface-in-asp-net-core
 
 ## What's next
@@ -274,12 +211,9 @@ Source: https://stackoverflow.com/questions/39174989/how-to-register-multiple-im
 - Options: <https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1>
 - Configuration: <https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1>
 - ASP.NET WebApi: <https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-3.1&tabs=visual-studio>
+- ASP.NET Core 5 Dependency Injection: <https://github.com/boeschenstein/aspnetcore5-dependency_injection>
 - About me: <https://github.com/boeschenstein>
 
 ### Current Versions
 
-- Visual Studio 2019 16.5.4
-- .NET core 3.1
-- npm 6.14.4
-- node 12.16.1
-- Angular CLI 9.1
+- .NET Core 3.1, 5
