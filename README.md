@@ -1,4 +1,4 @@
-# Configuration in ASP.NET Core 3.1, 5
+# Configuration in ASP.NET Core 3 + 5
 
 ## Goal
 
@@ -8,13 +8,13 @@ Get some understanding of .NET Core configuration principles.
 
 Your `program.cs` usually calls CreateDefaultBuilder.
 
-Look at the source code of CreateDefaultBuilder: <https://source.dot.net/#Microsoft.AspNetCore/WebHost.cs,39a38c5c70f8b573> (this ist the older IWebHostBuilder of .Net core 2, but it looks similar)
+Look at the source code of CreateDefaultBuilder in WebHost.cs: https://github.com/dotnet/aspnetcore/blob/master/src/DefaultBuilder/src/WebHost.cs>
 
 Reads configuration in the following **order**:
 
 1. Read `appsettings.json` using the JSON configuration provider.
 1. Read `appsettings.<Environment>.json` using the JSON configuration provider. For example, appsettings.Production.json and appsettings.Development.json.
-1. App secrets when the app runs in the Development environment.
+1. App secrets (when the app runs in the Development environment)
 1. Environment variables using the Environment Variables configuration provider.
 1. Command-line arguments using the Command-line configuration provider.
 
@@ -211,9 +211,9 @@ Source: https://stackoverflow.com/questions/39174989/how-to-register-multiple-im
 - Options: <https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1>
 - Configuration: <https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1>
 - ASP.NET WebApi: <https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-3.1&tabs=visual-studio>
-- ASP.NET Core 5 Dependency Injection: <https://github.com/boeschenstein/aspnetcore5-dependency_injection>
+- Dependency Injection: <https://github.com/boeschenstein/aspnetcore5-dependency_injection>
 - About me: <https://github.com/boeschenstein>
 
 ### Current Versions
 
-- .NET Core 3.1, 5
+- .NET Core 3, 5
