@@ -1,4 +1,4 @@
-# Configuration + Dependency Injection (DI) in ASP.NET Core 3.1, 5
+# Configuration in ASP.NET Core 3.1, 5
 
 ## Goal
 
