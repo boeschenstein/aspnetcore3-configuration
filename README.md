@@ -20,17 +20,17 @@ Reads configuration in the following **order**:
 
 ## Configuration API
 
-This is a deep dive into configuration: <https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1>
+This is a deep dive into configuration: <https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/>
 
 Usually, you don't use configuration directly. If you have any application specific configuration or settings, you can use [Options](https://github.com/boeschenstein/aspnetcore3-configuration#options).
 
 ## Environments
 
-<https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments?view=aspnetcore-3.1>
+<https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments>
 
 ## Typed Options
 
-<https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-5.0>
+<https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options>
 
 `appsettings.json` can contain application specific properties;
 
@@ -196,6 +196,19 @@ public class MyClass
 > Tip: You can check and manage user secrets by right-click on your main project: "Manage User Secrets".
 
 Source: https://stackoverflow.com/questions/39174989/how-to-register-multiple-implementations-of-the-same-interface-in-asp-net-core
+
+### IConfigurationRoot: GetDebugView()
+
+source: <https://twitter.com/cecilphillip/status/1362064796057755651>
+
+```cs
+app.UseEndpoints(endpoints => {
+  endpoints.MapGet("/dump-config", async ctx => {
+    var configInfo = (Configuration as IConfigurationRoot).GetDebugView();
+    await ctx.Response.WriteAsync(configInfo);
+  }
+});
+``` 
 
 ## What's next
 
