@@ -1,4 +1,4 @@
-# Configuration in ASP.NET Core 3 + 5
+# Configuration (AppSettings, Settings) in ASP.NET Core 3 + 5
 
 ## Goal
 
