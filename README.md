@@ -210,6 +210,10 @@ app.UseEndpoints(endpoints => {
 });
 ``` 
 
+### Secrets in .NET Framework
+
+Use ConfigurationBuilders
+
 ## What's next
 
 - Add Third party logger (Serilog) to your backend: <https://github.com/boeschenstein/angular9-dotnetcore3-logging>
@@ -221,6 +225,7 @@ app.UseEndpoints(endpoints => {
 
 - .NET Core Configuration: <https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1>
 - Secrets: <https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows>
+- Secrets in .NET Framework: <https://github.com/aspnet/MicrosoftConfigurationBuilders>
 - Options: <https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1>
 - Configuration: <https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1>
 - ASP.NET WebApi: <https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-3.1&tabs=visual-studio>
