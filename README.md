@@ -24,9 +24,12 @@ This is a deep dive into configuration: <https://docs.microsoft.com/en-us/aspnet
 
 Usually, you don't use configuration directly. If you have any application specific configuration or settings, you can use [Options](https://github.com/boeschenstein/aspnetcore3-configuration#options).
 
-## Environments
+## Environment
 
 <https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments>
+
+- at developement time: ASPNETCORE_ENVIRONMENT is set in launchSettings.json
+- at run time: set per stage by the environment variable `ASPNETCORE_ENVIRONMENT=<environment>`
 
 ## Typed Options
 
