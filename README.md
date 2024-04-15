@@ -16,7 +16,7 @@ Reads configuration in the following **order**:
 1. Read `appsettings.<Environment>.json` using the JSON configuration provider. For example, appsettings.Production.json and appsettings.Development.json.
 1. App secrets (when the app runs in the Development environment)
 1. Environment variables using the Environment Variables configuration provider.
-  1.1 check double underscore variables: <https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-8.0#non-prefixed-environment-variables>
+    1.1 check double underscore variables: <https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-8.0#non-prefixed-environment-variables>
 1. Command-line arguments using the Command-line configuration provider.
 
 ## Configuration API
