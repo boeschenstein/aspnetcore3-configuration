@@ -80,7 +80,7 @@ services.Configure<MyOptions>(Configuration);
 
 Have the configuration [injected](https://github.com/boeschenstein/definition#dependency-injection) configuration in your [service](https://github.com/boeschenstein/definition#what-is-a-service):
 
-``` c#
+```cs
 public class MyClass
 {
     private readonly MyOptions _myOption;
@@ -89,6 +89,26 @@ public class MyClass
     {
         _myOption = options.Value;
     }
+}
+```
+
+### Dynamic Config
+
+From David Fowler: <https://github.com/davidfowl/DotNetCodingPatterns/blob/main/1.md>
+
+```cs
+public class LibraryOptions
+{
+    public int Setting { get; set; }
+}
+
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddOptions<LibraryOptions>()
+            .Configure<ISomeService>((options, service) =>
+            {
+                options.Setting = service.ComputeSetting();
+            });
 }
 ```
 
