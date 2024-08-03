@@ -244,6 +244,15 @@ app.UseEndpoints(endpoints => {
 
 Use ConfigurationBuilders
 
+## Add configuration on the fly
+
+```cs
+configuration.AddInMemoryCollection(new Dictionary<string, string?>()
+{
+    ["ConnectionStrings:rabbitMq"] = myUri
+}).Build();
+```
+
 ## What's next
 
 - Add Third party logger (Serilog) to your backend: <https://github.com/boeschenstein/angular9-dotnetcore3-logging>
